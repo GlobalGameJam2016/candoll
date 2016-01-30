@@ -7,7 +7,7 @@ public class Player : Actor {
     private int candleLife;
 
 	// Use this for initialization
-	void Start () {
+	protected override void Start () {
         candleLife = 100;
         base.moveSpeed = 5;
         base.Start();
