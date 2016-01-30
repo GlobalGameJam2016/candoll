@@ -10,6 +10,7 @@ public class Player : Actor {
 	private int hiddenRate = 1;
 	private int detectedRate = 2;
 	public Text candleText;
+	public float speed;
 
 	// Use this for initialization
 	protected override void Start () {
@@ -52,15 +53,27 @@ public class Player : Actor {
 	void Update () {
 		TickCandle ();
 		candleText.text = "Candlelight: " + candleLife;
-        int horizontal = 0;
-        int vertical = 0;
-
-        horizontal = (int)(Input.GetAxisRaw("Horizontal"));
-        vertical = (int)(Input.GetAxisRaw("Vertical"));
-
-        if (horizontal != 0 || vertical != 0) {
-            base.Move(horizontal, vertical);
-        }
-
+//        int horizontal = 0;
+//        int vertical = 0;
+//
+//        horizontal = (int)(Input.GetAxisRaw("Horizontal"));
+//        vertical = (int)(Input.GetAxisRaw("Vertical"));
+//
+//        if (horizontal != 0 || vertical != 0) {
+//            base.Move(horizontal, vertical);
+//        }
+//
+		if (Input.GetKey(KeyCode.D)) {
+			transform.Translate (Vector2.right * speed);
+		}
+		if (Input.GetKey(KeyCode.A)) {
+			transform.Translate (Vector2.left * speed);
+		}
+		if (Input.GetKey(KeyCode.W)) {
+			transform.Translate (Vector2.up * speed);
+		}
+		if (Input.GetKey(KeyCode.S)) {
+			transform.Translate (Vector2.down * speed);
+		}
 	}
 }
