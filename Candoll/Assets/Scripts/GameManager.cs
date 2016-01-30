@@ -5,7 +5,7 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour {
 
 	// Time to wait to start a level (display black screen)
-	public float levelStartDelay = 2f;
+	public float levelStartDelay = 1f;
     public static GameManager instance = null;
     private int level = 1;
 
