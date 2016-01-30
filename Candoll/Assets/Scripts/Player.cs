@@ -9,18 +9,21 @@ public class Player : Actor {
 	// Use this for initialization
 	void Start () {
         candleLife = 100;
-        base.moveSpeed = 0.1f;
+        base.moveSpeed = 5;
         base.Start();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        int horizontalDir = 0;
-        int verticalDir = 0;
+        int horizontal = 0;
+        int vertical = 0;
 
-        horizontalDir = (int)(Input.GetAxisRaw("Horizontal"));
-        verticalDir = (int)(Input.GetAxisRaw("Vertical"));
+        horizontal = (int)(Input.GetAxisRaw("Horizontal"));
+        vertical = (int)(Input.GetAxisRaw("Vertical"));
 
+        if (horizontal != 0 || vertical != 0) {
+            base.Move(horizontal, vertical);
+        }
 
 	}
 }
