@@ -1,0 +1,17 @@
+/Users/danielchoi/Dropbox/Developer/unity/candoll/Candoll/Temp/bin/Debug/UnityEngine.dll
+/Users/danielchoi/Dropbox/Developer/unity/candoll/Candoll/Temp/bin/Debug/UnityEditor.dll
+/Users/danielchoi/Dropbox/Developer/unity/candoll/Candoll/Temp/bin/Debug/UnityEngine.Networking.dll
+/Users/danielchoi/Dropbox/Developer/unity/candoll/Candoll/Temp/bin/Debug/UnityEngine.UI.dll
+/Users/danielchoi/Dropbox/Developer/unity/candoll/Candoll/Temp/bin/Debug/Mono.Cecil.dll
+/Users/danielchoi/Dropbox/Developer/unity/candoll/Candoll/Temp/bin/Debug/Unity.SerializationLogic.dll
+/Users/danielchoi/Dropbox/Developer/unity/candoll/Candoll/Temp/bin/Debug/Unity.DataContract.dll
+/Users/danielchoi/Dropbox/Developer/unity/candoll/Candoll/Temp/bin/Debug/ICSharpCode.NRefactory.dll
+/Users/danielchoi/Dropbox/Developer/unity/candoll/Candoll/Temp/bin/Debug/Unity.UNetWeaver.dll
+/Users/danielchoi/Dropbox/Developer/unity/candoll/Candoll/Temp/bin/Debug/Unity.UNetWeaver.dll.mdb
+/Users/danielchoi/Dropbox/Developer/unity/candoll/Candoll/Temp/bin/Debug/Unity.CecilTools.dll
+/Users/danielchoi/Dropbox/Developer/unity/candoll/Candoll/Temp/bin/Debug/Mono.Cecil.Pdb.dll
+/Users/danielchoi/Dropbox/Developer/unity/candoll/Candoll/Temp/bin/Debug/Mono.Cecil.Mdb.dll
+/Users/danielchoi/Dropbox/Developer/unity/candoll/Candoll/Temp/bin/Debug/Assembly-CSharp.dll.mdb
+/Users/danielchoi/Dropbox/Developer/unity/candoll/Candoll/Temp/bin/Debug/Assembly-CSharp.dll
+/Users/danielchoi/Dropbox/Developer/unity/candoll/Candoll/obj/Debug/Assembly-CSharp.dll
+/Users/danielchoi/Dropbox/Developer/unity/candoll/Candoll/obj/Debug/Assembly-CSharp.dll.mdb

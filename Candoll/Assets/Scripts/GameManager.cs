@@ -34,7 +34,7 @@ public class GameManager : MonoBehaviour {
 
 	public void GameOver()
 	{
-		levelText.text = "You haunted the home for " + level " nights.";
+		levelText.text = "You haunted the home for " + level + " nights.";
 		levelImage.SetActive(true);
 		enabled = false;
 	}
