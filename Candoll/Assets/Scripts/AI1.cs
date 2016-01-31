@@ -28,8 +28,8 @@ public class AI1 : MonoBehaviour {
 			else
 				anim.SetInteger ("Direction", 1);
 		}
-
-//		anim.SetInteger ("Direction", 0);
+		else
+			anim.SetInteger ("Direction", 0);
 	}
 //
 //	void OnCollisionEnter2D (Collision2D obj)
