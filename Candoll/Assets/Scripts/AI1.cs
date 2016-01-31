@@ -16,4 +16,11 @@ public class AI1 : MonoBehaviour {
 			transform.position = Vector3.MoveTowards (transform.position, target.position, step);
 		}
 	}
+
+	void OnCollisionEnter2D (Collision2D obj)
+	{
+		Debug.Log ("Collided");
+	}
+
+
 }

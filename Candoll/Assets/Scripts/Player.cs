@@ -49,6 +49,19 @@ public class Player : Actor {
 		}
 	}
 
+	private void GetDamage()
+	{
+		candleLife -= 10000;
+	}
+
+	void OnCollisionEnter2D (Collision2D obj)
+	{
+		Debug.Log ("Collided");
+		if (obj.gameObject.tag == "Enemy") {
+			GetDamage ();
+		}
+	}
+
 	// Update is called once per frame
 	void Update () {
 		TickCandle ();
