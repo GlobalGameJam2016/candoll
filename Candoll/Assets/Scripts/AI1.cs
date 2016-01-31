@@ -5,10 +5,15 @@ public class AI1 : MonoBehaviour {
 
 	public Transform target;
 	public float speed;
+	public float chaseRadius;
+	private float distance;
 	
 	// Update is called once per frame
 	void Update () {
-		float step = speed * Time.deltaTime;
-		transform.position = Vector3.MoveTowards (transform.position, target.position, step);
+		distance = Vector3.Distance (transform.position, target.transform.position);
+		if (distance < chaseRadius) {
+			float step = speed * Time.deltaTime;
+			transform.position = Vector3.MoveTowards (transform.position, target.position, step);
+		}
 	}
 }
