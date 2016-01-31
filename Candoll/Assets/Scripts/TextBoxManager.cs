@@ -41,7 +41,7 @@ public class TextBoxManager : MonoBehaviour {
 
         if(Input.GetKeyDown(KeyCode.Return))
         {
-            currentLine += 1;
+            currentLine ++;
         }
 
         if(currentLine > endAtLine)
