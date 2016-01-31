@@ -12,10 +12,17 @@ public class Player : Actor {
 	public Text candleText;
 	public float speed;
 	public int dogDamage;
-
+	public bool hasShoe;
+	public AudioClip collisionSound;
+	public GameManager gameManager;
 	// Dirty little hack...
 	public GameObject gameOverImage;
 	public Text gameOverText;
+	public GameObject advanceLevelImage;
+	public Text advanceLevelText;
+	//public Text continueText;
+	private string enter = "Press Enter to Continue.";
+
 
 	// Use this for initialization
 	protected override void Start () {
@@ -30,6 +37,14 @@ public class Player : Actor {
 		gameOverImage = GameObject.Find ("GameOverImage");
 		gameOverText = GameObject.Find ("GameOverText").GetComponent<Text> ();
 		gameOverImage.SetActive (false);
+
+		advanceLevelImage = GameObject.Find ("CompleteImage");
+		advanceLevelText = GameObject.Find ("CompletionText").GetComponent<Text>();
+
+		advanceLevelImage.SetActive (false);
+		//continueText = GameObject.Find ("PressEnter").GetComponent<Text>();
+
+
 	}
 
     public int getCandleLife() 
@@ -68,18 +83,65 @@ public class Player : Actor {
 		gameOverText.text = "Game Over!";
 		gameOverImage.SetActive (true);
 	}
-
+	 /*
 	void OnCollisionEnter2D (Collision2D obj)
 	{
-		if (obj.gameObject.tag == "Enemy") {
+
+		//SoundManager.instance.PlaySingle (collisionSound);
+		switch (obj.gameObject.tag) {
+		case "Enemy":
+			Debug.Log ("Touched le dog");
 			GetDamage ();
+			break;
+
+		case "Candle":
+			Invoke("DisplayCutscene", 0.5f);
+			break;
+
+		case "Shoes":
+			Debug.Log ("Collided");
+			hasShoe = true;
+			Destroy (GameObject.Find ("Shoes"));
+			speed = (int)(speed * 1.5);
+
+			break;
+
+
 		}
+	}
+	*/
+
+	private void DisplayCutscene(){
+		advanceLevelImage.SetActive (true);
+		advanceLevelText.text = "Goal Complete.";
+		Invoke ("PressEnter", 0.5f);
+
+
+	}
+
+	private void PressEnter(){
+		//continueText.text = enter;
+		Invoke ("HideImages", 0.1f);
+		Invoke ("ClearText", 0.1f);
+		
+	}
+
+	private void ClearText(){
+		gameOverText.text = "";
+		advanceLevelText.text = "";
+		//continue.text = "";
+	}
+
+	private void hideImages(){
+		advanceLevelImage.SetActive (false);
+		gameOverImage.SetActive (false);
 	}
 
 	// Update is called once per frame
 	void Update () {
-		TickCandle ();
-		candleText.text = "Candlelight: " + candleLife;
+		if (gameManager.game == true) {
+			TickCandle ();
+			candleText.text = "Candlelight: " + candleLife;
 //        int horizontal = 0;
 //        int vertical = 0;
 //
@@ -90,18 +152,20 @@ public class Player : Actor {
 //            base.Move(horizontal, vertical);
 //        }
 //
-		if (candleLife <=0) Death();
-		if (Input.GetKey(KeyCode.D)) {
-			transform.Translate (Vector2.right * speed);
-		}
-		if (Input.GetKey(KeyCode.A)) {
-			transform.Translate (Vector2.left * speed);
-		}
-		if (Input.GetKey(KeyCode.W)) {
-			transform.Translate (Vector2.up * speed);
-		}
-		if (Input.GetKey(KeyCode.S)) {
-			transform.Translate (Vector2.down * speed);
+			if (candleLife <= 0)
+				Death ();
+			if (Input.GetKey (KeyCode.D)) {
+				transform.Translate (Vector2.right * speed);
+			}
+			if (Input.GetKey (KeyCode.A)) {
+				transform.Translate (Vector2.left * speed);
+			}
+			if (Input.GetKey (KeyCode.W)) {
+				transform.Translate (Vector2.up * speed);
+			}
+			if (Input.GetKey (KeyCode.S)) {
+				transform.Translate (Vector2.down * speed);
+			}
 		}
 	}
 }

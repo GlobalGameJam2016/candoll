@@ -7,7 +7,8 @@ public class GameManager : MonoBehaviour {
 	// Time to wait to start a level (display black screen)
 	public float levelStartDelay = 1f;
     public static GameManager instance = null;
-    private int level = 1;
+    public int level = 1;
+	public bool game = false;
 
 	// Display level
 	private Text levelText;
@@ -22,17 +23,22 @@ public class GameManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Awake () {
-		InitGame();
-//		if (instance == null)
-//			instance.gameObject.AddComponent<GameManager> ();
-//        else if (instance != this)
-//            Destroy(gameObject);
-//        DontDestroyOnLoad(gameObject);
+		if (instance == null)
+			instance = this;
+		else if (instance != this)
+			// Game is over
+			Destroy (gameObject);
+		// Background music keeps playing in between levels
+		DontDestroyOnLoad (gameObject);
+
+		InitGame ();
+
 	}
 
 	private void HideLevelImage()
 	{
 		levelImage.SetActive (false);
+		levelText.text = "";
 		doingSetup = false;
 	}
 
@@ -49,14 +55,16 @@ public class GameManager : MonoBehaviour {
 		InitGame ();
 	}
 
-    void InitGame()
+    public void InitGame()
 	{
+		
 		doingSetup = true;
 		levelImage = GameObject.Find ("LevelImage");
 		levelText = GameObject.Find ("LevelText").GetComponent<Text> ();
 		levelText.text = "Night " + level;
 		levelImage.SetActive (true);
 		Invoke ("HideLevelImage", levelStartDelay);
+		game = true;
 	}
 
 	// Update is called once per frame
@@ -64,6 +72,9 @@ public class GameManager : MonoBehaviour {
 	{
 		if (doingSetup)
 			return;
+		if (Input.GetKey (KeyCode.Return)) {
+			InitGame ();
+		}
 	
 	}
 }

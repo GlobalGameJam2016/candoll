@@ -1,13 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Enemy : Actor {
+public class Shoe : MonoBehaviour {
 
 	public Player script;
 
 	void OnTriggerEnter2D(Collider2D obj){
 		if (obj.gameObject.tag == "Player") {
-			script.Invoke ("GetDamage", 0f);
+			script.hasShoe = true;
+			Destroy (GameObject.Find ("Shoes"));
 		}
 	}
 }
