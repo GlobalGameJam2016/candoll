@@ -10,16 +10,18 @@ public class Player : Actor {
 	private int hiddenRate = 1;
 	private int detectedRate = 2;
 	public Text candleText;
+    public Text detectedText;
 	public float speed;
 
 	// Use this for initialization
 	protected override void Start () {
         candleLife = 100000;
         detected = false;
-        base.moveSpeed = 8;
+        base.speed = 8;
         base.Start();
 
 		candleText.text = "Candlelight: " + candleLife;
+        detectedText.text = "Detected: " + detected;
 	}
 
     public int getCandleLife() 
@@ -38,6 +40,10 @@ public class Player : Actor {
         detected = false;
     }
 
+    public bool isDetected() {
+        return detected;
+    }
+
 	// Decrements the candle life once every frame depending
 	// on the hidden state
 	private void TickCandle()
@@ -53,6 +59,7 @@ public class Player : Actor {
 	void Update () {
 		TickCandle ();
 		candleText.text = "Candlelight: " + candleLife;
+        detectedText.text = "Detected: " + detected;
 //        int horizontal = 0;
 //        int vertical = 0;
 //
