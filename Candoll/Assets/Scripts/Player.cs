@@ -12,6 +12,7 @@ public class Player : Actor {
 	public Text candleText;
 	public float speed;
 	public int dogDamage;
+	Animator anum;
 
 	// Dirty little hack...
 	public GameObject gameOverImage;
@@ -30,6 +31,10 @@ public class Player : Actor {
 		gameOverImage = GameObject.Find ("GameOverImage");
 		gameOverText = GameObject.Find ("GameOverText").GetComponent<Text> ();
 		gameOverImage.SetActive (false);
+
+		//gets animator object
+		anum = GetComponent<Animator>();
+		anum.SetInteger ("Direction", 0);
 	}
 
     public int getCandleLife() 
@@ -93,15 +98,20 @@ public class Player : Actor {
 		if (candleLife <=0) Death();
 		if (Input.GetKey(KeyCode.D)) {
 			transform.Translate (Vector2.right * speed);
+			anum.SetInteger ("Direction", 3);
+
 		}
 		if (Input.GetKey(KeyCode.A)) {
 			transform.Translate (Vector2.left * speed);
+			anum.SetInteger ("Direction", 1);
 		}
 		if (Input.GetKey(KeyCode.W)) {
 			transform.Translate (Vector2.up * speed);
+			anum.SetInteger ("Direction", 2);
 		}
 		if (Input.GetKey(KeyCode.S)) {
 			transform.Translate (Vector2.down * speed);
+			anum.SetInteger ("Direction", 0);
 		}
 	}
 }
