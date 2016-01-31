@@ -15,8 +15,12 @@ public class GameManager : MonoBehaviour {
 	private Text levelText;
 	// Use this to show or hide level loading screen
 	private GameObject levelImage;
+
 	// Prevent player from moving during setup
 	private bool doingSetup;
+
+	private GameManager(){
+	}
 
 	// Use this for initialization
 	void Awake () {
@@ -39,8 +43,8 @@ public class GameManager : MonoBehaviour {
 
 	public void GameOver()
 	{
-		levelText.text = "You haunted the home for " + level + " nights.";
-		levelImage.SetActive(true);
+		Debug.Log ("GAME OVER");
+
 		enabled = false;
 	}
 
