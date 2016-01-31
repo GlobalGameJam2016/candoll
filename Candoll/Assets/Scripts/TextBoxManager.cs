@@ -24,7 +24,6 @@ public class TextBoxManager : MonoBehaviour {
         if (textFile != null)
         {
             textLines = (textFile.text.Split('\n'));
-
         }
 
         if(endAtLine == 0)
@@ -39,15 +38,19 @@ public class TextBoxManager : MonoBehaviour {
     {
         theText.text = textLines[currentLine];
 
-        if(Input.GetKeyDown(KeyCode.Return))
-        {
-            currentLine ++;
-        }
-
-        if(currentLine > endAtLine)
+        if (currentLine > endAtLine)
         {
             textBox.SetActive(false);
         }
+
+        if (currentLine <= endAtLine)
+        {
+            if (Input.GetKeyDown(KeyCode.Return))
+            {
+                currentLine++;
+            }
+        }
+
     }
 
 }
