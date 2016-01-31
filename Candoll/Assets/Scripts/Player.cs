@@ -7,10 +7,15 @@ public class Player : Actor {
     //private Animator animator;
     private int candleLife;
     private bool detected;
-	private int hiddenRate = 1;
-	private int detectedRate = 2;
+	public int hiddenRate;
+	public int detectedRate;
 	public Text candleText;
 	public float speed;
+	public int dogDamage;
+
+	// Dirty little hack...
+	public GameObject gameOverImage;
+	public Text gameOverText;
 
 	// Use this for initialization
 	protected override void Start () {
@@ -20,6 +25,11 @@ public class Player : Actor {
         base.Start();
 
 		candleText.text = "Candlelight: " + candleLife;
+
+		// Hack pt 2
+		gameOverImage = GameObject.Find ("GameOverImage");
+		gameOverText = GameObject.Find ("GameOverText").GetComponent<Text> ();
+		gameOverImage.SetActive (false);
 	}
 
     public int getCandleLife() 
@@ -49,6 +59,23 @@ public class Player : Actor {
 		}
 	}
 
+	private void GetDamage()
+	{
+		candleLife -= dogDamage;
+	}
+
+	private void Death(){
+		gameOverText.text = "Game Over!";
+		gameOverImage.SetActive (true);
+	}
+
+	void OnCollisionEnter2D (Collision2D obj)
+	{
+		if (obj.gameObject.tag == "Enemy") {
+			GetDamage ();
+		}
+	}
+
 	// Update is called once per frame
 	void Update () {
 		TickCandle ();
@@ -63,6 +90,7 @@ public class Player : Actor {
 //            base.Move(horizontal, vertical);
 //        }
 //
+		if (candleLife <=0) Death();
 		if (Input.GetKey(KeyCode.D)) {
 			transform.Translate (Vector2.right * speed);
 		}
