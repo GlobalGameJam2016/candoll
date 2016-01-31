@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-using System.Collections;
+using System.Collections.Generic;
 using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour {
@@ -8,6 +8,8 @@ public class GameManager : MonoBehaviour {
 	public float levelStartDelay = 1f;
     public static GameManager instance = null;
     private int level = 1;
+    public Player player;
+    public List<Enemy> enemies; 
 
 	// Display level
 	private Text levelText;
@@ -22,12 +24,15 @@ public class GameManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Awake () {
-		InitGame();
-//		if (instance == null)
-//			instance.gameObject.AddComponent<GameManager> ();
-//        else if (instance != this)
-//            Destroy(gameObject);
-//        DontDestroyOnLoad(gameObject);
+        if (instance == null)
+            instance = this;
+        else if (instance != this)
+            Destroy(gameObject);
+        DontDestroyOnLoad(gameObject);
+        InitGame();
+
+        player = GameObject.Find("Player").GetComponentInChildren<Player>();
+        enemies = new List<Enemy>();
 	}
 
 	private void HideLevelImage()

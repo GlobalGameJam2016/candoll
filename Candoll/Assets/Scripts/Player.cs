@@ -10,6 +10,7 @@ public class Player : Actor {
 	public int hiddenRate;
 	public int detectedRate;
 	public Text candleText;
+    public Text detectedText;
 	public float speed;
 	public int dogDamage;
 	Animator anum;
@@ -22,10 +23,11 @@ public class Player : Actor {
 	protected override void Start () {
         candleLife = 100000;
         detected = false;
-        base.moveSpeed = 8;
+        base.speed = 8;
         base.Start();
 
 		candleText.text = "Candlelight: " + candleLife;
+//        detectedText.text = "Detected: " + detected;
 
 		// Hack pt 2
 		gameOverImage = GameObject.Find ("GameOverImage");
@@ -51,6 +53,10 @@ public class Player : Actor {
     public void hide()
     {
         detected = false;
+    }
+
+    public bool isDetected() {
+        return detected;
     }
 
 	// Decrements the candle life once every frame depending
@@ -85,6 +91,7 @@ public class Player : Actor {
 	void Update () {
 		TickCandle ();
 		candleText.text = "Candlelight: " + candleLife;
+//        detectedText.text = "Detected: " + detected;
 //        int horizontal = 0;
 //        int vertical = 0;
 //

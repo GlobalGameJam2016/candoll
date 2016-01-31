@@ -7,7 +7,7 @@ public class Actor : MonoBehaviour {
 
     private BoxCollider2D boxCollider;
     private Rigidbody2D rb2D;
-    protected int moveSpeed;
+    protected int speed;
 
 	// Use this for initialization
 	protected virtual void Start () {
@@ -20,7 +20,7 @@ public class Actor : MonoBehaviour {
         Vector2 start = transform.position;
         //int startX = xDir;
         //int startY = yDir;
-        Vector2 end = start + new Vector2(xDir * moveSpeed, yDir * moveSpeed);
+        Vector2 end = start + new Vector2(xDir * speed, yDir * speed);
         //int newX = startX + moveSpeed * xDir;
         //int newY = startY + moveSpeed * yDir;
        // boxCollider.enabled = false;
